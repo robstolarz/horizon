@@ -17,7 +17,9 @@ class Aggregate extends TermBase {
         return arg.v
       }
     })
-    Rx.Observable.combineLatest.apply(null, args, congregate.bind(this))
+    return Rx.Observable
+      .combineLatest
+      .apply(null, args, congregate.bind(this))
   }
 
   fetch() {
@@ -28,7 +30,9 @@ class Aggregate extends TermBase {
         return arg.v
       }
     })
-    Rx.Observable.combineLatest.apply(null, args, congregate.bind(this))
+    return Rx.Observable
+      .combineLatest
+      .apply(null, args, congregate.bind(this))
   }
 }
 
