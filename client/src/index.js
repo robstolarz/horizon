@@ -7,6 +7,7 @@ const { Collection } = require('./ast.js')
 const FusionSocket = require('./socket.js')
 const { log, logError, enableLogging } = require('./logging.js')
 const { subscribeOrObservable } = require('./utility.js')
+const { Aggregate } = require('./model.js')
 
 module.exports = Fusion
 
@@ -26,6 +27,10 @@ function Fusion(host, { secure = true,
 
   fusion.dispose = () => {
     socket.onCompleted()
+  }
+
+  fusion.aggregate = (spec) => {
+    return new Aggregate(sendRequest, spec)
   }
 
   // Dummy subscription to force it to connect to the
