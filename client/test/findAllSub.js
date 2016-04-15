@@ -11,8 +11,8 @@ const findAllSubscriptionSuite = window.findAllSubscriptionSuite = getData => ()
     observableInterleave({
       query: data.findAll(1).watch(),
       operations: [
-        data.store({ id: 1, a: 1 }),
-        data.remove(1),
+        data.store({ id: 1, a: 1 }).do(x => console.log('stored')),
+        data.remove(1).do(x => console.log('removed')),
       ],
       expected: [
         [],
